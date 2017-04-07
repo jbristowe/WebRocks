@@ -16,10 +16,10 @@ namespace WebRocks
 {
     public class WebRocksClient : IWebRocksClient
     {
-        public WebRocksClient(WebRocksConfiguration config)
+        public WebRocksClient(WebRocksConfiguration config, INeoRequestProvider requestProvider)
         {
             Config = config;
-            RequestProvider = new HttpNeoRequestProvider();
+            RequestProvider = requestProvider;
         }
 
         public WebRocksConfiguration Config { get; private set; }

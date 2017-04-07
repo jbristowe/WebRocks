@@ -22,7 +22,6 @@ namespace WebRocks.Requests
 
             using (var webResponse = (HttpWebResponse)webRequest.GetResponse())
             {
-                long length = webResponse.ContentLength;
                 response.ResponseCode = (int)webResponse.StatusCode;
 
                 if (IsSuccess(response))
@@ -49,7 +48,6 @@ namespace WebRocks.Requests
 
             using (var webResponse = (HttpWebResponse)(await webRequest.GetResponseAsync()))
             {
-                long length = webResponse.ContentLength;
                 response.ResponseCode = (int)webResponse.StatusCode;
 
                 if(IsSuccess(response))

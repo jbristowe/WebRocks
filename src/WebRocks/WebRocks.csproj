@@ -47,6 +47,7 @@
     <Compile Include="Data\ApiFeedPage.cs" />
     <Compile Include="Data\NeoStats.cs" />
     <Compile Include="OrbitalDataExtensions.cs" />
+    <Compile Include="Requests\HttpClientNeoRequestProvider.cs" />
     <Compile Include="Requests\HttpNeoRequestProvider.cs" />
     <Compile Include="Requests\INeoRequestProvider.cs" />
     <Compile Include="Internal\Serializers.cs" />

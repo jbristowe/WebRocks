@@ -57,8 +57,7 @@ namespace WebRocksTests
         [Fact]
         public void WebRocksClient_FormatsGetBrowsePage_PageSize()
         {
-            var client = new WebRocksClient(new WebRocksConfiguration("DEMO_KEY"));
-            client.RequestProvider = new ResourceRequestProvider();
+            var client = new WebRocksClient(new WebRocksConfiguration("DEMO_KEY"), new ResourceRequestProvider());
 
             var page = client.GetBrowsePage(0, 20);
 
@@ -69,7 +68,7 @@ namespace WebRocksTests
         [Fact]
         public void WebRocksClient_FormatsGetObjectById_ObjectParameters()
         {
-            var client = new WebRocksClient(new WebRocksConfiguration("DEMO_KEY"));
+            var client = new WebRocksClient(new WebRocksConfiguration("DEMO_KEY"), new ResourceRequestProvider());
             client.RequestProvider = new ResourceRequestProvider();
 
             var neo = client.GetObjectById(3542519);
@@ -80,7 +79,7 @@ namespace WebRocksTests
         [Fact]
         public void WebRocksClient_FormatsGetFeedPage_FeedData()
         {
-            var client = new WebRocksClient(new WebRocksConfiguration("DEMO_KEY"));
+            var client = new WebRocksClient(new WebRocksConfiguration("DEMO_KEY"), new ResourceRequestProvider());
             client.RequestProvider = new ResourceRequestProvider();
 
             var page = client.GetFeedPage(DateTime.Now.AddYears(-1));
