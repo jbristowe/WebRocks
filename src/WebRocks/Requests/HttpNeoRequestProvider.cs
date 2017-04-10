@@ -17,28 +17,32 @@ namespace WebRocks.Requests
 
         public NeoResponse SendGetRequest(Uri uri)
         {
-            var webRequest = (HttpWebRequest)WebRequest.Create(uri);
-            var response = new NeoResponse();
+            //var webRequest = (HttpWebRequest)WebRequest.Create(uri);
+            //var response = new NeoResponse();
 
-            using (var webResponse = (HttpWebResponse)webRequest.GetResponse())
-            {
-                response.ResponseCode = (int)webResponse.StatusCode;
+            //using (var webResponse = (HttpWebResponse)webRequest.GetResponse())
+            //{
+            //    response.ResponseCode = (int)webResponse.StatusCode;
 
-                if (IsSuccess(response))
-                {
-                    SetHeaders(response, webResponse);
+            //    if (IsSuccess(response))
+            //    {
+            //        SetHeaders(response, webResponse);
 
-                    using (var responseStream = webResponse.GetResponseStream())
-                    {
-                        using (var reader = new StreamReader(responseStream))
-                        {
-                            response.ResponseText = reader.ReadToEnd();
-                        }
-                    }
-                }
-            }
+            //        using (var responseStream = webResponse.GetResponseStream())
+            //        {
+            //            using (var reader = new StreamReader(responseStream))
+            //            {
+            //                response.ResponseText = reader.ReadToEnd();
+            //            }
+            //        }
+            //    }
+            //}
 
-            return response;
+            //return response;
+
+            var task = SendGetRequestAsync(uri);
+            task.Wait();
+            return task.Result;
         }
 
         public async Task<NeoResponse> SendGetRequestAsync(Uri uri)

@@ -40,6 +40,16 @@ namespace WebRocks
             return GetObjectFromResponse<ApiBrowsePage>(response, serializer);
         }
 
+        public async Task<ApiBrowsePage> GetBrowsePageAsync(int pageNumber, int pageSize)
+        {
+            Uri requestUrl = Config.ApiUrl.ConstructNeowsBrowsePageUri(pageNumber, pageSize, Config.ApiKey);
+            var serializer = Serializers.ApiBrowsePage;
+
+            var response = await RequestProvider.SendGetRequestAsync(requestUrl);
+            SetRateLimits(response);
+            return GetObjectFromResponse<ApiBrowsePage>(response, serializer);
+        }
+
         public ApiFeedPage GetFeedPage(DateTime startDate)
         {
             Uri requestUrl = Config.ApiUrl.ConstructNeowsGetFeedUri(startDate, startDate.AddDays(7), Config.ApiKey);
